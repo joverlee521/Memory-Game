@@ -1,0 +1,10 @@
+ul {
+    background-color: #004BA4;
+}
+
+#nav-img{
+    max-width: 500px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+}
