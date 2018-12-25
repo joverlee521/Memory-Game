@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import NavBar from "./components/Navbar";
 import CardsWrapper from "./components/CardsWrapper";
+import MessageWrapper from "./components/MessageWrapper";
 import ImageCard from "./components/ImageCard";
 import Footer from "./components/Footer";
-import characters from "./characters.json"
+import characters from "./characters.json";
+import "./App.css"
 
 class App extends Component {
   constructor(props){
@@ -12,8 +14,7 @@ class App extends Component {
       score: 0,
       topScore: 0,
       clicked: [],
-      win: false,
-      lose: false
+      winLose: ""
     }
   }
 
@@ -37,13 +38,13 @@ class App extends Component {
     const clickedArray = this.state.clicked;
     if(clickedArray.includes(id)){
       this.updateTopScore();
-      this.setState({lose: true, clicked: []})
+      this.setState({winLose: "lose", clicked: []})
     }
     else{
       clickedArray.push(id);
       if(clickedArray.length === characters.length){
         this.updateTopScore();
-        this.setState({win: true, clicked: []});
+        this.setState({winLose: "win", clicked: []});
       }
       else{
         this.updateScore();
@@ -77,23 +78,22 @@ class App extends Component {
   }
 
   render() {
-    // if(this.state.win){
-    //   return(<h1>You Win!</h1>)
-    // }
-    // else if(this.state.lose){
-    //   return(<h1>You Lose!</h1>)
-    // }
-    // else{
-      return (
-        <div>
-          <NavBar score={this.state.score} topScore={this.state.topScore}/>
-          <CardsWrapper>
-            {this.renderCharacters()}
-          </CardsWrapper>
-          <Footer />
+    let content;
+    if(this.state.winLose.length > 0){
+      content = <MessageWrapper winLose={this.state.winLose}/>
+    }
+    else{
+      content = <CardsWrapper>{this.renderCharacters()}</CardsWrapper>
+    }
+    return (
+      <div className="wrapper">
+        <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose}/>
+        <div className="content">
+          {content}
         </div>
-      );
-    // }
+        <Footer />
+      </div>
+    );
   }
 }
 
