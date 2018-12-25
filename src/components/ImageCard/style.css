@@ -1,0 +1,21 @@
+.img-custom {
+    max-height: 150px;
+    max-width: 150px;
+    height: auto;
+    width: auto;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.character-card{
+    background-color: #004BA4;
+    border: 1px solid #004BA4;
+    border-radius: 30px;
+    height: 180px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 30px;
+}

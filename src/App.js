@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import Wrapper from "./components/Wrapper";
 import NavBar from "./components/Navbar";
+import CardsWrapper from "./components/CardsWrapper";
 import ImageCard from "./components/ImageCard";
+import characters from "./characters.json"
 
 class App extends Component {
   constructor(props){
@@ -10,9 +13,17 @@ class App extends Component {
       topScore: 0
     }
   }
+
+  renderCharacters = () => characters.map(character => <ImageCard character={character}/>);
+
   render() {
     return (
-      <NavBar score={this.state.score} topScore={this.state.topScore}/>
+      <Wrapper>
+        <NavBar score={this.state.score} topScore={this.state.topScore}/>
+        <CardsWrapper>
+          {this.renderCharacters()}
+        </CardsWrapper>
+      </Wrapper>
     );
   }
 }

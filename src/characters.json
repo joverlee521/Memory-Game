@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "All Might Power",
+        "image": "/images/all-might-power.png"
+    },
+    {
+        "id": 2,
+        "name": "All Might Weak",
+        "image": "/images/all-might-weak.png"
+    },
+    {
+        "id": 3,
+        "name": "Recovery Girl",
+        "image": "/images/recovery-girl.png"
+    },
+    {
+        "id": 4,
+        "name": "Deku",
+        "image": "/images/deku.png"
+    },
+    {
+        "id": 5,
+        "name": "Froppy",
+        "image": "/images/froppy.png"
+    },
+    {
+        "id": 6,
+        "name": "Bakugo",
+        "image": "/images/bakugo.png"
+    },
+    {
+        "id": 7,
+        "name": "Uravity",
+        "image": "/images/uravity.png"
+    },
+    {
+        "id": 8,
+        "name": "Grape Juice",
+        "image": "/images/grape-juice.png"
+    },
+    {
+        "id": 9,
+        "name": "Tsukuyomi",
+        "image": "/images/tsukuyomi.png"
+    },
+    {
+        "id": 10,
+        "name": "Tomura",
+        "image": "/images/tomura.png"
+    },
+    {
+        "id": 11,
+        "name": "Nomu",
+        "image": "/images/nomu.png"
+    },
+    {
+        "id": 12,
+        "name": "Thirteen",
+        "image": "/images/thirteen.png"
+    }
+]
