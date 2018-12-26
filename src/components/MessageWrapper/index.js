@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css"
 
 function MessageWrapper(props){
     const winLose = props.winLose;
@@ -12,6 +13,7 @@ function MessageWrapper(props){
     return(
         <div className="messageWrapper">
             {image}
+            <button onClick={props.restart}type="button" class="btn btn-primary my-3">Restart Game</button>
         </div>
     )
 }

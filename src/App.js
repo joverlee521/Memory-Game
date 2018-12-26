@@ -34,6 +34,10 @@ class App extends Component {
     this.setState({score: 0});
   }
 
+  resetGame = () => {
+    this.setState({winLose: ""});
+  }
+
   clickState = id => {
     const clickedArray = this.state.clicked;
     if(clickedArray.includes(id)){
@@ -43,6 +47,7 @@ class App extends Component {
     else{
       clickedArray.push(id);
       if(clickedArray.length === characters.length){
+        this.updateScore();
         this.updateTopScore();
         this.setState({winLose: "win", clicked: []});
       }
@@ -80,7 +85,7 @@ class App extends Component {
   render() {
     let content;
     if(this.state.winLose.length > 0){
-      content = <MessageWrapper winLose={this.state.winLose}/>
+      content = <MessageWrapper winLose={this.state.winLose} restart={this.resetGame}/>
     }
     else{
       content = <CardsWrapper>{this.renderCharacters()}</CardsWrapper>

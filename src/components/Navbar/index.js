@@ -21,7 +21,7 @@ function NavBar(props){
             <li className="nav-item text-white h3">
                 {message}
             </li>
-            <li className="nav-item text-white h3">Score: {props.score} | Top Score: {props.topScore}</li>
+            <li className="nav-item text-white h4">Score: {props.score} | Top Score: {props.topScore}</li>
         </ul>
     );
 }
