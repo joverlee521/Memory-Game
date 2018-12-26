@@ -18,14 +18,24 @@ class App extends Component {
     }
   }
 
-  updateScore = () => {
+  updateScore = (clickedArray) => {
     let currentScore = this.state.score;
     currentScore++;
-    this.setState({score: currentScore});
+    console.log(currentScore);
+    this.setState({score: currentScore}, () => {
+      if(clickedArray.length === characters.length){
+        this.updateTopScore();
+        this.setState({winLose: "win", clicked: []});
+      }
+      else{
+        this.setState({clicked: clickedArray});
+      }
+    });
   }
 
   updateTopScore = () => {
     let currentScore = this.state.score;
+    console.log(currentScore);
     let currentTopScore = this.state.topScore;
     if(currentScore > currentTopScore){
       currentTopScore = currentScore;
@@ -46,15 +56,7 @@ class App extends Component {
     }
     else{
       clickedArray.push(id);
-      if(clickedArray.length === characters.length){
-        this.updateScore();
-        this.updateTopScore();
-        this.setState({winLose: "win", clicked: []});
-      }
-      else{
-        this.updateScore();
-        this.setState({clicked: clickedArray});
-      }
+      this.updateScore(clickedArray);
     }
   }
 

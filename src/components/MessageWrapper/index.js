@@ -13,7 +13,7 @@ function MessageWrapper(props){
     return(
         <div className="messageWrapper">
             {image}
-            <button onClick={props.restart}type="button" class="btn btn-primary my-3">Restart Game</button>
+            <button onClick={props.restart}type="button" className="btn btn-primary my-3">Restart Game</button>
         </div>
     )
 }
