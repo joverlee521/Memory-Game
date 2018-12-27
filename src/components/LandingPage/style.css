@@ -1,0 +1,16 @@
+.custom-jumbo {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #004BA4;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.landing-img {
+    height: 50vh;
+    width: auto;
+}

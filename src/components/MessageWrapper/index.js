@@ -8,7 +8,7 @@ function MessageWrapper(props){
         image = <img src={`${process.env.PUBLIC_URL}/images/win.gif`} alt="Win GIF"/>
     }
     else if(winLose === "lose"){
-        image = <img src={`${process.env.PUBLIC_URL}}/images/lose.gif`} alt="Lose GIF"/>
+        image = <img src={`${process.env.PUBLIC_URL}/images/lose.gif`} alt="Lose GIF"/>
     }
     return(
         <div className="messageWrapper">

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LandingPage from "./components/LandingPage";
 import NavBar from "./components/Navbar";
 import CardsWrapper from "./components/CardsWrapper";
 import MessageWrapper from "./components/MessageWrapper";
@@ -11,6 +12,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      start: false,
       score: 0,
       topScore: 0,
       clicked: [],
@@ -18,10 +20,13 @@ class App extends Component {
     }
   }
 
+  startGame = () => {
+    this.setState({start: true});
+  }
+
   updateScore = (clickedArray) => {
     let currentScore = this.state.score;
     currentScore++;
-    console.log(currentScore);
     this.setState({score: currentScore}, () => {
       if(clickedArray.length === characters.length){
         this.updateTopScore();
@@ -35,7 +40,6 @@ class App extends Component {
 
   updateTopScore = () => {
     let currentScore = this.state.score;
-    console.log(currentScore);
     let currentTopScore = this.state.topScore;
     if(currentScore > currentTopScore){
       currentTopScore = currentScore;
@@ -85,8 +89,9 @@ class App extends Component {
   }
 
   render() {
+    if(this.state.start){
     let content;
-    if(this.state.winLose.length > 0){
+    if(this.state.winLose === "win" || this.state.winLose === "lose"){
       content = <MessageWrapper winLose={this.state.winLose} restart={this.resetGame}/>
     }
     else{
@@ -101,6 +106,12 @@ class App extends Component {
         <Footer />
       </div>
     );
+    }
+    else{
+      return(
+        <LandingPage startGame={this.startGame}/>
+      )
+    }
   }
 }
 
