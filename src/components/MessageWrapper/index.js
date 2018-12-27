@@ -5,10 +5,10 @@ function MessageWrapper(props){
     const winLose = props.winLose;
     let image;
     if(winLose === "win"){
-        image = <img src="/images/win.gif" alt="Win GIF"/>
+        image = <img src={`${process.env.PUBLIC_URL}/images/win.gif`} alt="Win GIF"/>
     }
     else if(winLose === "lose"){
-        image = <img src="/images/lose.gif" alt="Lose GIF"/>
+        image = <img src={`${process.env.PUBLIC_URL}}/images/lose.gif`} alt="Lose GIF"/>
     }
     return(
         <div className="messageWrapper">
