@@ -24,13 +24,25 @@ class App extends Component {
     this.setState({start: true});
   }
 
+  winGame = () => {
+    this.setState({winLose: "win", clicked: []});
+  }
+
+  loseGame = () => {
+    this.setState({winLose: "lose", clicked: []});
+  }
+
+  resetGame = () => {
+    this.setState({winLose: ""});
+  }
+
   updateScore = (clickedArray) => {
     let currentScore = this.state.score;
     currentScore++;
     this.setState({score: currentScore}, () => {
       if(clickedArray.length === characters.length){
         this.updateTopScore();
-        this.setState({winLose: "win", clicked: []});
+        this.winGame();
       }
       else{
         this.setState({clicked: clickedArray});
@@ -48,15 +60,11 @@ class App extends Component {
     this.setState({score: 0});
   }
 
-  resetGame = () => {
-    this.setState({winLose: ""});
-  }
-
   clickState = id => {
     const clickedArray = this.state.clicked;
     if(clickedArray.includes(id)){
       this.updateTopScore();
-      this.setState({winLose: "lose", clicked: []})
+      this.loseGame();
     }
     else{
       clickedArray.push(id);
@@ -92,7 +100,7 @@ class App extends Component {
     if(this.state.start){
       return (
         <div className="wrapper">
-          <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose} currentGame={this.state.clicked}/>
+          <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose} updateTopScore={this.updateTopScore} loseGame={this.loseGame}/>
           <div className="content">
             {(this.state.winLose !== "")? <MessageWrapper winLose={this.state.winLose} restart={this.resetGame}/> : <CardsWrapper>{this.renderCharacters()}</CardsWrapper>}
           </div>

@@ -11,6 +11,5 @@
 }
 
 .landing-img {
-    height: 50vh;
-    width: auto;
+    max-height: 50vh;
 }
