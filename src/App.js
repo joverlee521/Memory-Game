@@ -90,22 +90,15 @@ class App extends Component {
 
   render() {
     if(this.state.start){
-    let content;
-    if(this.state.winLose === "win" || this.state.winLose === "lose"){
-      content = <MessageWrapper winLose={this.state.winLose} restart={this.resetGame}/>
-    }
-    else{
-      content = <CardsWrapper>{this.renderCharacters()}</CardsWrapper>
-    }
-    return (
-      <div className="wrapper">
-        <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose} currentGame={this.state.clicked}/>
-        <div className="content">
-          {content}
+      return (
+        <div className="wrapper">
+          <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose} currentGame={this.state.clicked}/>
+          <div className="content">
+            {(this.state.winLose !== "")? <MessageWrapper winLose={this.state.winLose} restart={this.resetGame}/> : <CardsWrapper>{this.renderCharacters()}</CardsWrapper>}
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    );
+      );
     }
     else{
       return(
