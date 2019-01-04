@@ -3,6 +3,7 @@ import "./style.css";
 
 function NavBar(props){
     const winLose = props.winLose;
+    const currentGame = props.currentGame;
     let message;
     if(winLose === "win"){
         message = "You Win!"
@@ -10,8 +11,11 @@ function NavBar(props){
     else if(winLose === "lose"){
         message = "You Lost!"
     }
-    else{
+    else if(currentGame.length === 0){
         message = "Click an image to start!"
+    }
+    else{
+        message = "Keep clicking!"
     }
     return(
         <ul className="nav sticky-top justify-content-between align-items-center flex-lg-row flex-column px-3">

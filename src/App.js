@@ -99,7 +99,7 @@ class App extends Component {
     }
     return (
       <div className="wrapper">
-        <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose}/>
+        <NavBar score={this.state.score} topScore={this.state.topScore} winLose={this.state.winLose} currentGame={this.state.clicked}/>
         <div className="content">
           {content}
         </div>
