@@ -1,33 +1,70 @@
-import React from "react";
+import React, {Component} from "react";
 import "./style.css";
 
-function NavBar(props){
-    const winLose = props.winLose;
-    const currentGame = props.currentGame;
-    let message;
-    if(winLose === "win"){
-        message = "You Win!"
+let myTimer;
+
+class NavBar extends Component {
+    constructor(props){
+        super(props);
+        this.state = {timer: 9}
     }
-    else if(winLose === "lose"){
-        message = "You Lost!"
+
+    startTimer = () => {
+        this.resetTimer();
+        myTimer = setInterval(() => {
+         this.setState({timer: this.state.timer - 1});
+        }, 1000);
     }
-    else if(currentGame.length === 0){
-        message = "Click an image to start!"
+
+    resetTimer = () => {
+        clearInterval(myTimer);
+        this.setState({timer: 10});
     }
-    else{
-        message = "Keep clicking!"
+    
+    displayMessage = () => {
+        const winLose = this.props.winLose;
+        const score = this.props.score;
+        const timer = this.state.timer;
+        if(winLose === "win"){
+            return "You Win!"
+        }
+        else if(winLose === "lose"){
+            return "You Lost!"
+        }
+        else if(score === 0){
+            return "Click an image to start!"
+        }
+        else{
+            return "Keep clicking! " + timer + " seconds left!"
+        }
+    }  
+
+    componentDidUpdate = (prevProps, prevState) => {
+        console.log(prevState.timer);
+        if(prevState.timer === 1){
+            this.props.updateTopScore();
+            this.props.loseGame();
+            this.resetTimer();
+        }
+        else if(prevProps.score !== this.props.score && this.props.score !== 0){
+            console.log("started timer");
+            this.startTimer();
+        }
     }
-    return(
-        <ul className="nav sticky-top justify-content-between align-items-center flex-lg-row flex-column px-3">
-            <li className="nav-item">
-                <img src={`${process.env.PUBLIC_URL}/images/my-hero-logo.png`} id="nav-img" alt="My Hero Academia"/>
-            </li>
-            <li className="nav-item text-white h3">
-                {message}
-            </li>
-            <li className="nav-item text-white h4">Score: {props.score} | Top Score: {props.topScore}</li>
-        </ul>
-    );
+
+    render(){ 
+        return(
+            <ul className="nav sticky-top justify-content-between align-items-center flex-lg-row flex-column px-3">
+                <li className="nav-item">
+                    <img src={`${process.env.PUBLIC_URL}/images/my-hero-logo.png`} id="nav-img" alt="My Hero Academia"/>
+                </li>
+                <li className="nav-item text-white h3">
+                    {this.displayMessage()}
+                </li>
+                <li className="nav-item text-white h4">Score: {this.props.score} | Top Score: {this.props.topScore}</li>
+            </ul>
+        );
+    }
 }
 
 export default NavBar;
