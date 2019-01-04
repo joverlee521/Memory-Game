@@ -1,5 +1,5 @@
 # My Hero Academia Memory Game
-A simple memory game based on the anime "My Hero Academia" that is made with React.
+A React memory game based on the anime "My Hero Academia."
 
 ## Deployment
 This game has been deployed to GitHub Pages: https://joverlee521.github.io/Memory-Game/
@@ -16,3 +16,4 @@ This game has been deployed to GitHub Pages: https://joverlee521.github.io/Memor
 
 ## Technologies Used
 * Bootstrap and React
+* JavaScript
