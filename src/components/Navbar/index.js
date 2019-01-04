@@ -41,7 +41,7 @@ class NavBar extends Component {
 
     componentDidUpdate = (prevProps, prevState) => {
         console.log(prevState.timer);
-        if(prevState.timer === 1){
+        if(prevState.timer === 0){
             this.props.updateTopScore();
             this.props.loseGame();
             this.resetTimer();
